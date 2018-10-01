@@ -27,7 +27,22 @@ if __name__ == '__main__':
 
     for i in inFiles:
         f = open(i)
-        out.append(Popen("python " + args.prog, stdout=PIPE, stdin=f).stdout.read())
+        out.append(Popen("python " + args.prog, stdout=PIPE, stdin=f).stdout.read().decode())
     
+    out = [s.replace("\r", "") for s in out]
+
+    for i in range(len(out)):
+        a = out[i]
+        b = outReal[i]
+        print("Testing input " + inFiles[i])
+        if a == b:
+            print("\tTest succeeded")
+        else:
+            print("\tTest failed")
+            print("\tExpected: " + b)
+            print("\tReceived: " + a)
+
+
+
     print(out)
     print(outReal)
