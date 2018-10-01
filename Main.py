@@ -31,5 +31,18 @@ if __name__ == '__main__':
     
     out = [s.replace("\r", "") for s in out]
 
+    for i in range(len(out)):
+        a = out[i]
+        b = outReal[i]
+        print("Testing input " + inFiles[i])
+        if a == b:
+            print("\tTest succeeded")
+        else:
+            print("\tTest failed")
+            print("\tExpected: " + b)
+            print("\tReceived: " + a)
+
+
+
     print(out)
     print(outReal)
