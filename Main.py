@@ -3,12 +3,14 @@ import subprocess
 from subprocess import Popen, PIPE
 from os import listdir
 from os.path import isfile, join
+import time
 
 
 if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('-prog', dest="prog", required=True)
     parser.add_argument('-test', dest="test", required=True)
+    parser.add_argument('-time', dest="time", type=int, required=False)
     args = parser.parse_args()
     print('vars args', vars(args))
 
@@ -20,6 +22,7 @@ if __name__ == '__main__':
 
     out = []
     outReal = []
+    outTime = []
 
     for a in ansFiles:
         f = open(a)
