@@ -30,15 +30,20 @@ if __name__ == '__main__':
 
     for i in inFiles:
         f = open(i)
+        start = time.time()
         out.append(Popen("python " + args.prog, stdout=PIPE, stdin=f).stdout.read().decode())
+        end = time.time()
+        outTime.append(end-start)
     
     out = [s.replace("\r", "") for s in out]
 
     for i in range(len(out)):
         a = out[i]
         b = outReal[i]
+        t = outTime[i]
         print("Testing input " + inFiles[i])
         if a == b:
+            
             print("\tTest succeeded")
         else:
             print("\tTest failed")
@@ -49,3 +54,4 @@ if __name__ == '__main__':
 
     print(out)
     print(outReal)
+    print(outTime)
