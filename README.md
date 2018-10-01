@@ -4,9 +4,7 @@ This is a tool to run sample data from kattis problems. To help verify if your s
 
 
 ## TODO
-* Find sample data and load it
-* Run program and collect result
-* Verify result
-* CPU time limit
-* Memory limit
 * Add tests
+* Help argument
+* Handle floats properly
+* Check for compile and runtime errors
