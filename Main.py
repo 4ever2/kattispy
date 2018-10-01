@@ -29,5 +29,7 @@ if __name__ == '__main__':
         f = open(i)
         out.append(Popen("python " + args.prog, stdout=PIPE, stdin=f).stdout.read().decode())
     
+    out = [s.replace("\r", "") for s in out]
+
     print(out)
     print(outReal)
