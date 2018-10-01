@@ -27,7 +27,7 @@ if __name__ == '__main__':
 
     for i in inFiles:
         f = open(i)
-        out.append(Popen("python " + args.prog, stdout=PIPE, stdin=f).stdout.read())
+        out.append(Popen("python " + args.prog, stdout=PIPE, stdin=f).stdout.read().decode())
     
     print(out)
     print(outReal)
