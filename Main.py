@@ -48,16 +48,22 @@ if __name__ == '__main__':
         a = out[i]
         b = outReal[i]
         t = outTime[i]
+        m = outMem[i]
         print("Testing input " + inFiles[i])
         if a == b:
             if args.time >= 0:
                 if t > args.time:
                     print("\tTest took too long")
                     print("\tTime: " + str(t))
-                else:
-                    print("\tTest succeeded")
-            else:
-                print("\tTest succeeded")
+                    continue
+            
+            if args.mem >= 0:
+                if m > args.mem:
+                    print("\tTest used too much memory")
+                    print("\tMemory: " + str(m))
+                    continue
+
+            print("\tTest succeeded")
         else:
             print("\tTest failed")
             print("\tExpected: " + b)
