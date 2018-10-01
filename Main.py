@@ -43,8 +43,12 @@ if __name__ == '__main__':
         t = outTime[i]
         print("Testing input " + inFiles[i])
         if a == b:
-            
-            print("\tTest succeeded")
+            if t > args.time:
+                print("\tTest failed")
+                print("\tTest took too long")
+                print("\tTime: " + t)
+            else:
+                print("\tTest succeeded")
         else:
             print("\tTest failed")
             print("\tExpected: " + b)
