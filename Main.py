@@ -12,15 +12,16 @@ if __name__ == '__main__':
     args = parser.parse_args()
     print('vars args', vars(args))
 
-    infiles = [join(args.test, f) for f in listdir(args.test) if isfile(join(args.test, f)) & f.endswith(".in")]
-    ansfiles = [join(args.test, f) for f in listdir(args.test) if isfile(join(args.test, f)) & f.endswith(".ans")]
+    inFiles = [join(args.test, f) for f in listdir(args.test) if isfile(join(args.test, f)) & f.endswith(".in")]
+    ansFiles = [join(args.test, f) for f in listdir(args.test) if isfile(join(args.test, f)) & f.endswith(".ans")]
 
     #print(infiles)
     #print(ansfiles)
 
     out = []
 
-    for i in infiles:
+
+    for i in inFiles:
         f = open(i)
         out.append(Popen("python " + args.prog, stdout=PIPE, stdin=f).stdout.read())
     
