@@ -19,10 +19,15 @@ if __name__ == '__main__':
     #print(ansfiles)
 
     out = []
+    outReal = []
 
+    for a in ansFiles:
+        f = open(a)
+        outReal.append(f.read())
 
     for i in inFiles:
         f = open(i)
         out.append(Popen("python " + args.prog, stdout=PIPE, stdin=f).stdout.read())
     
     print(out)
+    print(outReal)
