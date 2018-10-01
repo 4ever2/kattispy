@@ -4,6 +4,7 @@ from subprocess import Popen, PIPE
 from os import listdir
 from os.path import isfile, join
 import time
+import psutil
 
 
 if __name__ == '__main__':
@@ -11,6 +12,7 @@ if __name__ == '__main__':
     parser.add_argument('-prog', dest="prog", required=True)
     parser.add_argument('-test', dest="test", required=True)
     parser.add_argument('-time', dest="time", type=int, default=-1, required=False)
+    parser.add_argument('-mem', dest="mem", type=int, default=-1, required=False)
     args = parser.parse_args()
     print('vars args', vars(args))
 
@@ -23,6 +25,7 @@ if __name__ == '__main__':
     out = []
     outReal = []
     outTime = []
+    outMem = []
 
     for a in ansFiles:
         f = open(a)
@@ -31,8 +34,12 @@ if __name__ == '__main__':
     for i in inFiles:
         f = open(i)
         start = time.time()
-        out.append(Popen("python " + args.prog, stdout=PIPE, stdin=f).stdout.read().decode())
+        p = psutil.Popen("python " + args.prog, stdout=PIPE, stdin=f)
+        t = p.memory_info()
+        out.append(p.stdout.read().decode())
         end = time.time()
+
+        outMem.append(t[3])
         outTime.append(end-start)
     
     out = [s.replace("\r", "") for s in out]
@@ -61,3 +68,4 @@ if __name__ == '__main__':
     print(out)
     print(outReal)
     print(outTime)
+    print(outMem)
