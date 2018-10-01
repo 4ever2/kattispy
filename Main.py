@@ -10,7 +10,7 @@ if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('-prog', dest="prog", required=True)
     parser.add_argument('-test', dest="test", required=True)
-    parser.add_argument('-time', dest="time", type=int, required=False)
+    parser.add_argument('-time', dest="time", type=int, default=-1, required=False)
     args = parser.parse_args()
     print('vars args', vars(args))
 
@@ -43,10 +43,12 @@ if __name__ == '__main__':
         t = outTime[i]
         print("Testing input " + inFiles[i])
         if a == b:
-            if t > args.time:
-                print("\tTest failed")
-                print("\tTest took too long")
-                print("\tTime: " + t)
+            if args.time >= 0:
+                if t > args.time:
+                    print("\tTest took too long")
+                    print("\tTime: " + str(t))
+                else:
+                    print("\tTest succeeded")
             else:
                 print("\tTest succeeded")
         else:
