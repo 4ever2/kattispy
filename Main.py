@@ -3,12 +3,14 @@ import subprocess
 from subprocess import Popen, PIPE
 from os import listdir
 from os.path import isfile, join
+import time
 
 
 if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('-prog', dest="prog", required=True)
     parser.add_argument('-test', dest="test", required=True)
+    parser.add_argument('-time', dest="time", type=int, default=-1, required=False)
     args = parser.parse_args()
     print('vars args', vars(args))
 
@@ -20,6 +22,7 @@ if __name__ == '__main__':
 
     out = []
     outReal = []
+    outTime = []
 
     for a in ansFiles:
         f = open(a)
@@ -27,16 +30,27 @@ if __name__ == '__main__':
 
     for i in inFiles:
         f = open(i)
+        start = time.time()
         out.append(Popen("python " + args.prog, stdout=PIPE, stdin=f).stdout.read().decode())
+        end = time.time()
+        outTime.append(end-start)
     
     out = [s.replace("\r", "") for s in out]
 
     for i in range(len(out)):
         a = out[i]
         b = outReal[i]
+        t = outTime[i]
         print("Testing input " + inFiles[i])
         if a == b:
-            print("\tTest succeeded")
+            if args.time >= 0:
+                if t > args.time:
+                    print("\tTest took too long")
+                    print("\tTime: " + str(t))
+                else:
+                    print("\tTest succeeded")
+            else:
+                print("\tTest succeeded")
         else:
             print("\tTest failed")
             print("\tExpected: " + b)
@@ -46,3 +60,4 @@ if __name__ == '__main__':
 
     print(out)
     print(outReal)
+    print(outTime)
