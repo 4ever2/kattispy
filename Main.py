@@ -6,13 +6,15 @@ from os.path import isfile, join
 import time
 import psutil
 
-supported_langs = ["python", "go"]
+supported_langs = ["python", "go", "node"]
 
 def run_test():
     if args.lang == supported_langs[0]:
         return psutil.Popen("python " + args.prog, stdout=PIPE, stdin=f)
     if args.lang == supported_langs[1]:
         return psutil.Popen("go run " + args.prog, stdout=PIPE, stdin=f)
+    if args.lang == supported_langs[2]:
+        return psutil.Popen("node " + args.prog, stdout=PIPE, stdin=f)
 
 if __name__ == '__main__':
     parser = ArgumentParser()
@@ -27,6 +29,11 @@ if __name__ == '__main__':
     inFiles = [join(args.test, f) for f in listdir(args.test) if isfile(join(args.test, f)) & f.endswith(".in")]
     ansFiles = [join(args.test, f) for f in listdir(args.test) if isfile(join(args.test, f)) & f.endswith(".ans")]
 
+    
+    if len(inFiles) != len(ansFiles):
+        print("There is not an equal number of test input and output")
+        exit()
+
     out = []
     outReal = []
     outTime = []
@@ -37,22 +44,22 @@ if __name__ == '__main__':
         outReal.append(f.read())
 
     for i in inFiles:
-        f = open(i)
-        start = time.time()
-
         if args.lang not in supported_langs:
             print("Language not supported: " + args.lang)
             exit()
-        else:
-            p = run_test()
-            t = p.memory_info()
-            out.append(p.stdout.read().decode())
-            end = time.time()
 
-            outMem.append(t[3])
-            outTime.append(end-start)
+        f = open(i)
+        start = time.time()
+        p = run_test()
+        t = p.memory_info()
+        out.append(p.stdout.read().decode())
+        end = time.time()
+
+        outMem.append(t[3])
+        outTime.append(end-start)
     
     out = [s.replace("\r", "") for s in out]
+
 
     for i in range(len(out)):
         a = out[i]

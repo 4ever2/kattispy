@@ -1,7 +1,7 @@
 # kattispy
 This is a tool to run sample data from kattis problems. You can use this tool to help verify if your solution is correct before submitting.
 
-At the moment only python and go are supported languages. Please keep in mind that you need to have the language installed to actually run it.
+At the moment only python, go and Node.js are supported languages. Please keep in mind that you need to have the language installed to actually run it.
 
 ## How to use
 kattispy requires at least three and up to five arguments.
@@ -37,7 +37,7 @@ Sample test data can be downloaded from the kattis page for each problem
   * ~~Go~~
   * ~~Python 3~~
   * Python 2
-  * Node.js
+  * ~~Node.js~~
   * PHP
   * Java
   * C
