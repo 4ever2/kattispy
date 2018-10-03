@@ -1,5 +1,5 @@
 # kattispy
-This is a tool to run sample data from kattis problems. To help verify if your solutions os correct.
+This is a tool to run sample data from kattis problems. You can use this tool to help verify if your solution is correct before submitting.
 
 
 
