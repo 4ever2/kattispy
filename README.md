@@ -9,7 +9,7 @@ Required:
 * -prog [path of file you want to test] 
 * -test [path of folder containing answers]
 
-Oprional:
+Optional:
 
 * -mem [maximum memory usable by the program in bytes]
 * -time [maximum execution time of your program in seconds]
