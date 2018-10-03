@@ -29,6 +29,11 @@ if __name__ == '__main__':
     inFiles = [join(args.test, f) for f in listdir(args.test) if isfile(join(args.test, f)) & f.endswith(".in")]
     ansFiles = [join(args.test, f) for f in listdir(args.test) if isfile(join(args.test, f)) & f.endswith(".ans")]
 
+    
+    if len(inFiles) != len(ansFiles):
+        print("There is not an equal number of test input and output")
+        exit()
+
     out = []
     outReal = []
     outTime = []
@@ -54,6 +59,7 @@ if __name__ == '__main__':
         outTime.append(end-start)
     
     out = [s.replace("\r", "") for s in out]
+
 
     for i in range(len(out)):
         a = out[i]
