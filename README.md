@@ -6,6 +6,10 @@ At the moment only python and go are supported languages. Please keep in mind th
 # How to use
 kattispy requires at least three and up to five arguments.
 
+```
+  python Main.py -prog programfile -test testdirectory -lang programlanguage
+```
+
 Required:
 
 * -lang [specify the language of the program]
@@ -20,6 +24,7 @@ Optional:
 Sample test data can be downloaded from the kattis page for each problem
 
 
+
 ## TODO
 * Add tests
 * Help argument
@@ -27,6 +32,29 @@ Sample test data can be downloaded from the kattis page for each problem
 * Check for compile and runtime errors
 * Make code modular
 * Add support for more languages
-* Add documentation to README
+  * ~~Go~~
+  * ~~Python 3~~
+  * Python 2
+  * Node.js
+  * PHP
+  * Java
+  * C
+  * C++
+  * C#
+  * Haskel
+  * SpiderMonkey
+  * Kotlin
+  * Objective-C
+  * Pascal
+  * Prolog
+  * Ruby
+  * Scala
+* ~~Add documentation to README~~
 * Linux support
 * Add automated tests
+* ~~Find sample data and load it~~
+* ~~Run program and collect output~~
+* ~~Verify result~~
+* ~~CPU time limit~~
+* ~~Memory limit~~
+
