@@ -3,11 +3,13 @@ This is a tool to run sample data from kattis problems. You can use this tool to
 
 At the moment only python and go are supported languages. Please keep in mind that you need to have the language installed to actually run it.
 
-# How to use
+## How to use
 kattispy requires at least three and up to five arguments.
 
-```
-  python Main.py -prog programfile -test testdirectory -lang programlanguage
+```bash
+$ git clone https://github.com/Maaslalaniii/Dungeon.git
+$ cd kattispy
+$ python Main.py -prog programfile -test testdirectory -lang programlanguage
 ```
 
 Required:
@@ -58,3 +60,5 @@ Sample test data can be downloaded from the kattis page for each problem
 * ~~CPU time limit~~
 * ~~Memory limit~~
 
+## Contribute
+Contributions are always welcome!
