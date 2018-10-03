@@ -19,9 +19,6 @@ if __name__ == '__main__':
     inFiles = [join(args.test, f) for f in listdir(args.test) if isfile(join(args.test, f)) & f.endswith(".in")]
     ansFiles = [join(args.test, f) for f in listdir(args.test) if isfile(join(args.test, f)) & f.endswith(".ans")]
 
-    #print(infiles)
-    #print(ansfiles)
-
     out = []
     outReal = []
     outTime = []
@@ -69,9 +66,3 @@ if __name__ == '__main__':
             print("\tExpected: " + b)
             print("\tReceived: " + a)
 
-
-
-    print(out)
-    print(outReal)
-    print(outTime)
-    print(outMem)
