@@ -7,7 +7,7 @@ At the moment only python and go are supported languages. Please keep in mind th
 kattispy requires at least three and up to five arguments.
 
 ```bash
-$ git clone https://github.com/Maaslalaniii/Dungeon.git
+$ git clone https://github.com/4ever2/kattispy.git
 $ cd kattispy
 $ python Main.py -prog programfile -test testdirectory -lang programlanguage
 ```
